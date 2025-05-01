@@ -31,9 +31,19 @@ func rubberDuckResource() *schema.Resource {
 				return err
 			}
 
-			d.Set("color", rubberDuck.Color)
-			d.Set("material", rubberDuck.Material)
-			d.Set("size", rubberDuck.Size)
+			d.SetId(rubberDuck.ID)
+
+			if err := d.Set("color", rubberDuck.Color); err != nil {
+				return err
+			}
+
+			if err := d.Set("material", rubberDuck.Material); err != nil {
+				return err
+			}
+
+			if err := d.Set("size", rubberDuck.Size); err != nil {
+				return err
+			}
 
 			return nil
 		},
